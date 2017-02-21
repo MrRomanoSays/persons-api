@@ -13,6 +13,14 @@ function getPerson (id, cb) {
   })
 }
 
+function addPerson (id, cb) {
+  db.put(id, function (err, res) {
+    if(err) console.log("Error with the database: ", err)
+    console.log("Successfully added a person! ", res)
+    cb(null, res)
+  })
+}
+
 
 
 
@@ -25,7 +33,8 @@ getPerson("person_armstrong_lance_oops@gmail.com", function (err, res) {
 
 
 const dal = {
-  getPerson: getPerson
+  getPerson: getPerson,
+  addPerson: addPerson
 }
 
 module.exports = dal
