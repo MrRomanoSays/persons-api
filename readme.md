@@ -15,12 +15,11 @@ $ npm start
 
 The following route parameters can be utilized:
 
-**:id**   *Each document's unique identifier*
-**:firstName**    *The First Name associated with the document*
-**:lastName**   *The Last Name associated with the document*
-**:email**    *The email address associated with the document*
-**:type**   *The type associated with the document. For documents of `/persons` type would be "person" ... For documents of `/addresses` type could be "home, vacation, gravesite"
-
+**:id**   *Each document's unique identifier*  
+**:firstName**    *The First Name associated with the document*  
+**:lastName**   *The Last Name associated with the document*  
+**:email**    *The email address associated with the document*  
+**:type**   *The type associated with the document. For documents of `/persons` type would be "person" ... For documents of `/addresses` type could be "home, vacation, gravesite"  
 
 Example call:
 
