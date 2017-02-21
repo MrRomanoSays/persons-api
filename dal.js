@@ -13,11 +13,10 @@ function getPerson (id, cb) {
   })
 }
 
-function addPerson (id, cb) {
-  db.put(id, function (err, res) {
-    if(err) console.log("Error with the database: ", err)
-    console.log("Successfully added a person! ", res)
-    cb(null, res)
+function addPerson (doc, cb) {
+  db.put(doc, function (err, doc) {
+    if(err) return cb(err)
+    cb(null, doc)
   })
 }
 
