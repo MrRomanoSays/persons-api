@@ -1,7 +1,7 @@
 const express = require("express")
 const app = express()
 const dal = require("./dal.js")
-const bodyParser - require('body-parser')
+const bodyParser = require('body-parser')
 
 console.log("Welcome to the persons api.")
 
@@ -23,7 +23,7 @@ app.get('/persons/:id', function (req, res) {
 
 app.post('/persons', function(req, res) {
   console.log(req.body)
-  
+
 })
 
 
