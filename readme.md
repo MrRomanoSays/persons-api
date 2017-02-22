@@ -8,7 +8,7 @@ $ npm start
 ```
 
 ### Quick Links
-[Read a doc](### READ A DOCUMENT using `GET /persons/:id`)  
+[Read a doc](#read-a-document-using-`get-/persons/:id`)  
 [Create a doc](### CREATE A DOCUMENT using `POST /persons`)  
 [Delete a doc](### DELETE A DOCUMENT using `DELETE /persons/:id`)  
 [Update a doc](### UPDATE A DOCUMENT using `PUT /persons/:id`)  
