@@ -7,6 +7,14 @@ $ npm install
 $ npm start
 ```
 
+### Quick Links
+[Read a doc](### READ A DOCUMENT using `GET /persons/:id`)  
+[Create a doc](### CREATE A DOCUMENT using `POST /persons`)  
+[Delete a doc](### DELETE A DOCUMENT using `DELETE /persons/:id`)  
+[Update a doc](### UPDATE A DOCUMENT using `PUT /persons/:id`)  
+[Status Code Guide](### TROUBLESHOOTING STATUS CODE MESSAGES)  
+
+
 ## Endpoints
 
 ### READ A DOCUMENT using `GET /persons/:id`
@@ -136,3 +144,10 @@ EX: /persons/person_seinfeld_elaine_elaine@gmail.com
 }
 ```
 -------------------
+
+### TROUBLESHOOTING STATUS CODE MESSAGES  
+
+200 - Successful action  
+201 - Created new document  
+407 - Conflict in database  
+404 -
