@@ -147,7 +147,7 @@ EX: /persons/person_seinfeld_elaine_elaine@gmail.com
 
 ### TROUBLESHOOTING STATUS CODE MESSAGES  
 
-200 - Successful action  
-201 - Created new document  
-407 - Conflict in database  
-404 -
+200 - The request has succeeded.  
+201 - The request has been fulfilled and resulted in a new document being created.
+409 - The request could not be completed due to a conflict with the current state of the database. This code is only allowed in situations where it is expected that the user might be able to resolve the conflict and resubmit the request.  
+404 - The server has not found anything matching the Request.
