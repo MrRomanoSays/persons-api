@@ -1,7 +1,6 @@
 # Getting Started
 
 ```
-
 $ git clone https://github.com/MrRomanoSays/persons-api.git
 $ cd persons-api  
 $ npm install
@@ -51,7 +50,6 @@ EX: GET /persons/person_armstrong_lance_oops@gmail.com
 **> Example Call:**
 
 ```
-
 POST /persons
 EX: POST /persons
 ```
@@ -91,7 +89,6 @@ EX: POST /persons
 ```
 DELETE /persons/:id
 DELETE /persons/person_NewPersonFirstName_NewPersonLastName_NewPersonEmailAddress@gmail.com
-
 ```
 
 **< Example Response:**
@@ -114,7 +111,6 @@ DELETE /persons/person_NewPersonFirstName_NewPersonLastName_NewPersonEmailAddres
 ```
 PUT /persons/:id
 EX: /persons/person_seinfeld_elaine_elaine@gmail.com
-
 ```
 
 > MESSAGE BODY
