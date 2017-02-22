@@ -1,10 +1,19 @@
 const express = require('express')
 const app = express()
 const port = process.env.PORT || 8080
-const {getPerson, addPerson, deletePerson, updatePerson, getPersons} = require('./dal.js')
+const {
+    getPerson,
+    addPerson,
+    deletePerson,
+    updatePerson,
+    getPersons
+} = require('./dal.js')
 const bodyParser = require('body-parser')
 const HTTPError = require('node-http-error');
-const { map } = require("ramda")
+const {
+    map,
+    prop
+} = require("ramda")
 
 app.use(bodyParser.json())
 
@@ -18,17 +27,25 @@ app.get('/persons/:id', function(req, res, next) {
 
 //GET ALL PEOPLE
 app.get('/persons', function(req, res, next) {
-//console.log("Here is my query string value for limit:", req.query.limit)
-//console.log("Here is my query string value for car color: ", req.query.color)
-  getPersons(req.query.limit, function (err, people) {
-    if (err) return next(new HTTPError(err.status, err.message, err))
-    res.status(200).send(map(obj=>obj.doc,people.rows))
-  })
+    //console.log("Here is my query string value for limit:", req.query.limit)
+    //console.log("Here is my query string value for car color: ", req.query.color)
+    getPersons(req.query.limit, function(err, people) {
+        if (err) return next(new HTTPError(err.status, err.message, err))
+        res.status(200).send(map(obj => obj.doc, people.rows))
+    })
 })
 
+// //CREATE PERSON
+// app.post('/persons', function(req, res, next) {
+//     addPerson(req.body, function(err, dalResponse) {
+//         if (err) return next(new HTTPError(err.status, err.message, err))
+//         res.status(201).send(dalResponse)
+//     })
+// })
 
-//CREATE PERSON
+//WORK IN PROGRESS FOR CREATE PERSON WITH CHECKS FOR FIRST, LAST, EMAIL
 app.post('/persons', function(req, res, next) {
+
     addPerson(req.body, function(err, dalResponse) {
         if (err) return next(new HTTPError(err.status, err.message, err))
         res.status(201).send(dalResponse)
