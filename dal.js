@@ -1,48 +1,43 @@
-const pouchDB = require("pouchdb-http")
-const {map, omit, compose} = require ("ramda")
+const PouchDB = require('pouchdb-http')
+const {map, omit, compose} = require('ramda')
+const db = new PouchDB('http://localhost:3000/test')
 
-const db = new pouchDB("http://localhost:3000/test")
 
-function getPerson (id, cb) {
+// create and export a function that retrieves a person from your couch database
+
+function getPerson(id, cb) {
+//  "person_maddux_greg_maddog96@yahoo.com"
   db.get(id, function (err, doc) {
-      //Error
-      if(err) console.log("Error: ", err)
-      //Success
-      console.log("Success! ", doc)
-      cb(null, doc)
-  })
-}
-
-function addPerson (doc, cb) {
-  db.put(doc, function (err, doc) {
-    if(err) return cb(err)
+    if (err) return cb(err)
     cb(null, doc)
   })
 }
 
-
-
-
-//TESTING
-
-const newPersonToAdd = {
-  "_id": "person_seinfeld_elaine_elaine@gmail.com",
-  "firstName": "Elaine",
-  "lastName": "Seinfeld",
-  "email": "elaine@gmail.com",
-  "type": "person"
+function addPerson(doc, cb) {
+  db.put(doc, function (err, res) {
+    if (err) return cb(err)
+    cb(null, res)
+  })
 }
 
-addPerson(newPersonToAdd, function (err, res) {
-  if(err) return console.log("ERROR AT DATABASE LEVEL", err)
-  console.log("SUCCESSFUL PING OF DATABASE...SENT FROM DAL", res)
-})
+function deletePerson (id, cb) {
 
+  db.get(id, function(err, doc) {
+    if (err) return cb(err)
 
+    db.remove(doc, function(err, removedDoc) {
+      if (err) return cb(err)
+      cb(null, removedDoc)
+    })
+
+  })
+
+}
 
 const dal = {
   getPerson: getPerson,
-  addPerson: addPerson
+  addPerson: addPerson,
+  deletePerson: deletePerson
 }
 
 module.exports = dal

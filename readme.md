@@ -15,11 +15,11 @@ $ npm start
 
 The following route parameters can be utilized:
 
-**:id**   *Each document's unique identifier*  
-**:firstName**    *The First Name associated with the document*  
-**:lastName**   *The Last Name associated with the document*  
-**:email**    *The email address associated with the document*  
-**:type**   *The type associated with the document.  
+**:id**   -   *Each document's unique identifier*  
+**:firstName**   -   *The First Name associated with the document*  
+**:lastName**   -   *The Last Name associated with the document*  
+**:email**   -   *The email address associated with the document*  
+**:type**   -   *The type associated with the document.*  
 * For documents of `/persons` type would be "person"  
 * For documents of `/addresses` type could be ["home", "vacation", "gravesite"]
 
@@ -41,42 +41,58 @@ GET /persons/person_armstrong_lance_oops@gmail.com
   "type": "person"
 }
 ```
+-------------------
 
-**Example `/addresses` Call:**
+### `POST /persons`
+
+**`post /persons`** will create, or  [*"put"*]("https://pouchdb.com/api.html#create_document"), a new person in the database using their unique *"id key"* and text for the document that you will need to provide in the **body** of your request.
+
+**Example `POST /persons` Call:**
 
 ```
-CHANGE GET /persons/person_armstrong_lance_oops@gmail.com
+POST /persons
 
 ```
 
-**Example `/addresses` Response:**
 ```
-{CHANGE
-  "_id": "person_armstrong_lance_oops@gmail.com",
-  "_rev": "2-a609c2a0185c4f47c17d872e00f32957",
-  "firstName": "Lance",
-  "lastName": "Armstrong",
-  "email": "oops@gmail.com",
+MESSAGE body
+
+{
+  "_id": "person_NewPersonFirstName_NewPersonLastName_NewPersonEmailAddress@gmail.com",
+  "firstName": "NewPersonFirstName",
+  "lastName": "NewPersonLastName",
+  "email": "NewPersonEmailAddress@gmail.com",
   "type": "person"
 }
 ```
 
-
-
-### `POST /persons`
-
-Adds a person to the pdatabase
-
-####parametersNone
-#### body
-Provide a person JSON object i the request body
-
+**Example `/persons` Response:**
 ```
-Example
-```
-#### Example Call
-```
-POST /persons
+{
+  "ok": true,
+  "id": "person_NewPersonFirstName_NewPersonLastName_NewPersonEmailAddress@gmail.com",
+  "rev": "1-e41a046293bbc20e9cb3bed7a5d40051"
+}
 ```
 
-...more...
+-------------------
+
+### `DELETE /persons/:id`
+
+**`delete /persons/:id`** will delete, or  [*"remove"*]("https://pouchdb.com/api.html#delete_document"), a person in the database using their unique *"id key"* and the document's latest *"rev key"*.
+
+**Example `DELETE /persons/:id` Call:**
+
+```
+DELETE /persons/person_NewPersonFirstName_NewPersonLastName_NewPersonEmailAddress@gmail.com
+
+```
+
+**Example `/persons` Response:**
+```
+{
+  "ok": true,
+  "id": "person_NewPersonFirstName_NewPersonLastName_NewPersonEmailAddress@gmail.com",
+  "rev": "2-91689fb6eae278e6e13c477a74ba10d8"
+}
+```
