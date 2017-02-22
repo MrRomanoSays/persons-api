@@ -24,7 +24,16 @@ function addPerson (doc, cb) {
 
 
 //TESTING
-getPerson("person_armstrong_lance_oops@gmail.com", function (err, res) {
+
+const newPersonToAdd = {
+  "_id": "person_seinfeld_elaine_elaine@gmail.com",
+  "firstName": "Elaine",
+  "lastName": "Seinfeld",
+  "email": "elaine@gmail.com",
+  "type": "person"
+}
+
+addPerson(newPersonToAdd, function (err, res) {
   if(err) return console.log("ERROR AT DATABASE LEVEL", err)
   console.log("SUCCESSFUL PING OF DATABASE...SENT FROM DAL", res)
 })

@@ -2,9 +2,9 @@ const express = require("express")
 const app = express()
 const dal = require("./dal.js")
 const bodyParser = require('body-parser')
+app.use(bodyParser.json())
 
 console.log("Welcome to the persons api.")
-
 
 app.get('/persons/:id', function (req, res) {
   dal.getPerson(req.params.id, function (err, doc) {
@@ -23,10 +23,10 @@ app.get('/persons/:id', function (req, res) {
 
 app.post('/persons', function(req, res) {
   console.log(req.body)
-
+  dal.addPerson(req.body, function (err, doc) {
+    if(err) res.send("ERROR reported by database: ", err)
+    res.send("Succesful return from database: ", doc)
 })
-
-
 
 app.listen(3000, function() {
   console.log('Person API is listening on port 8080')

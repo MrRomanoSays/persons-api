@@ -60,3 +60,23 @@ CHANGE GET /persons/person_armstrong_lance_oops@gmail.com
   "type": "person"
 }
 ```
+
+
+
+### `POST /persons`
+
+Adds a person to the pdatabase
+
+####parametersNone
+#### body
+Provide a person JSON object i the request body
+
+```
+Example
+```
+#### Example Call
+```
+POST /persons
+```
+
+...more...
