@@ -27,6 +27,7 @@ app.post('/persons', function(req, res) {
     if(err) res.send("ERROR reported by database: ", err)
     res.send("Succesful return from database: ", doc)
 })
+})
 
 app.listen(3000, function() {
   console.log('Person API is listening on port 8080')
