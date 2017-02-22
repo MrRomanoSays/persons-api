@@ -1,12 +1,13 @@
 const express = require('express')
 const app = express()
 const port = process.env.PORT || 8080
-const {getPerson, addPerson, deletePerson} = require('./dal.js')
+const {getPerson, addPerson, deletePerson, updatePerson} = require('./dal.js')
 const bodyParser = require('body-parser')
 const HTTPError = require('node-http-error');
 
 app.use(bodyParser.json())
 
+//GET PERSON
 app.get('/persons/:id', function(req, res, next) {
     getPerson(req.params.id, function(err, person) {
         if (err) return next(new HTTPError(err.status, err.message, err))
@@ -14,6 +15,7 @@ app.get('/persons/:id', function(req, res, next) {
     })
 })
 
+//CREATE PERSON
 app.post('/persons', function(req, res, next) {
     addPerson(req.body, function(err, dalResponse) {
         if (err) return next(new HTTPError(err.status, err.message, err))
@@ -21,7 +23,15 @@ app.post('/persons', function(req, res, next) {
     })
 })
 
+//UPDATE PERSON
+app.put('/persons/:id', function(req, res, next) {
+    updatePerson(req.body, function(err, dalResponse) {
+        if (err) return next(new HTTPError(err.status, err.message, err))
+        res.status(201).send(dalResponse)
+    })
+})
 
+//DELETE PERSON
 app.delete('/persons/:id', function(req, res, next) {
     deletePerson(req.params.id, function(err, person) {
         if (err) return next(new HTTPError(err.status, err.message, err))

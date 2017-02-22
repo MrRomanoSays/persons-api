@@ -20,8 +20,15 @@ function addPerson(doc, cb) {
   })
 }
 
-function deletePerson (id, cb) {
+function updatePerson(doc, cb) {
+  db.put(doc, function (err, res) {
+    if (err) return cb(err)
+    cb(null, res)
+  })
+}
 
+
+function deletePerson (id, cb) {
   db.get(id, function(err, doc) {
     if (err) return cb(err)
 
@@ -29,14 +36,18 @@ function deletePerson (id, cb) {
       if (err) return cb(err)
       cb(null, removedDoc)
     })
-
   })
-
 }
+
+
+
+
+
 
 const dal = {
   getPerson: getPerson,
   addPerson: addPerson,
+  updatePerson: updatePerson,
   deletePerson: deletePerson
 }
 
