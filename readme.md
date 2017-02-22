@@ -9,10 +9,10 @@ $ npm start
 
 ### Quick Links
 [Read a doc](#read-a-document)  
-[Create a doc](### CREATE A DOCUMENT using `POST /persons`)  
-[Delete a doc](### DELETE A DOCUMENT using `DELETE /persons/:id`)  
-[Update a doc](### UPDATE A DOCUMENT using `PUT /persons/:id`)  
-[Status Code Guide](### TROUBLESHOOTING STATUS CODE MESSAGES)  
+[Create a doc](#create-a-document)  
+[Delete a doc](#delete-a-document)  
+[Update a doc](#update-a-document)  
+[Status Code Guide](#troubleshooting-status-code-messages)  
 
 
 ## Endpoints
@@ -51,7 +51,7 @@ EX: GET /persons/person_armstrong_lance_oops@gmail.com
 ```
 -------------------
 
-### CREATE A DOCUMENT using `POST /persons`
+### CREATE A DOCUMENT
 
 **`post /persons`** will create, or  [*"put"*]("https://pouchdb.com/api.html#create_document"), a new person in the database using the entry's unique *"id key"*.  The document is passed specific details within the **body** of your request.  This should be made using JSON.
 
@@ -88,7 +88,7 @@ EX: POST /persons
 
 -------------------
 
-### DELETE A DOCUMENT using `DELETE /persons/:id`
+### DELETE A DOCUMENT
 
 **`delete /persons/:id`** will delete, or  [*"remove"*]("https://pouchdb.com/api.html#delete_document"), a person in the database using their unique *"id key"* and the document's latest *"rev key"*.
 
@@ -110,7 +110,7 @@ DELETE /persons/person_NewPersonFirstName_NewPersonLastName_NewPersonEmailAddres
 
 -------------------
 
-### UPDATE A DOCUMENT using `PUT /persons/:id`
+### UPDATE A DOCUMENT
 
 **`put /persons/:id`** will update a database record using  [*"put"*]("https://pouchdb.com/api.html#create_document").  The put relies on the document's unique *"id key"* and the most recent *"rev key"*.  The update itself is provided within the **body** of your request.  This should be made using JSON.
 
