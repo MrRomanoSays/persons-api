@@ -13,12 +13,30 @@ function getPerson(id, cb) {
   })
 }
 
-function addPerson(doc, cb) {
-  db.put(doc, function (err, res) {
-    if (err) return cb(err)
-    cb(null, res)
+
+function getPersons(limit, cb) {
+  db.allDocs({include_docs:true, start_key:"person_", end_key:"person_\uffff", limit:limit}, function (err, docs) {
+    if (err) cb(err)
+    cb(null, docs)
   })
 }
+
+function addPerson(doc, cb) {
+    prepNewPerson(doc)
+    db.put(doc, function (err, res) {
+      if (err) return cb(err)
+      cb(null, res)
+    })
+}
+
+
+//HELPER FUNCTION FOR addPerson
+function prepNewPerson(doc) {
+  doc._id = "person_" + doc.lastName.toLowerCase() + "_" + doc.firstName.toLowerCase() + "_" + doc.email.toLowerCase()
+  doc.type = "person"
+  return doc
+}
+
 
 function updatePerson(doc, cb) {
   db.put(doc, function (err, res) {
@@ -40,15 +58,12 @@ function deletePerson (id, cb) {
 }
 
 
-
-
-
-
 const dal = {
   getPerson: getPerson,
   addPerson: addPerson,
   updatePerson: updatePerson,
-  deletePerson: deletePerson
+  deletePerson: deletePerson,
+  getPersons: getPersons
 }
 
 module.exports = dal
