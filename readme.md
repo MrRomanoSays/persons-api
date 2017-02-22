@@ -8,7 +8,7 @@ $ npm start
 ```
 
 ### Quick Links
-[Read a doc](#read-a-document-using-`get-/persons/:id`)  
+[Read a doc](#read-a-document)  
 [Create a doc](### CREATE A DOCUMENT using `POST /persons`)  
 [Delete a doc](### DELETE A DOCUMENT using `DELETE /persons/:id`)  
 [Update a doc](### UPDATE A DOCUMENT using `PUT /persons/:id`)  
@@ -17,7 +17,7 @@ $ npm start
 
 ## Endpoints
 
-### READ A DOCUMENT using `GET /persons/:id`
+### READ A DOCUMENT
 
 **`GET /persons/:id`** will [*"fetch"*]("https://pouchdb.com/api.html#fetch_document") a specific person from the database according to a unique "\_id key".
 
