@@ -3,6 +3,7 @@ const app = express()
 const port = process.env.PORT || 8080
 const {
     getPerson,
+    getAddress,
     addPerson,
     deletePerson,
     updatePerson,
@@ -10,10 +11,7 @@ const {
 } = require('./dal.js')
 const bodyParser = require('body-parser')
 const HTTPError = require('node-http-error');
-const {
-    map,
-    prop
-} = require("ramda")
+const { map, prop } = require("ramda")
 
 app.use(bodyParser.json())
 
@@ -22,6 +20,14 @@ app.get('/persons/:id', function(req, res, next) {
     getPerson(req.params.id, function(err, person) {
         if (err) return next(new HTTPError(err.status, err.message, err))
         res.status(200).send(person)
+    })
+})
+
+//GET ADDRESS
+app.get(`/addresses/:id`, function(req, res, next) {
+    getAddress(req.params.id, function(err, address) {
+      if (err) return next(new HTTPError(err.status, err.message, err))
+      res.status(200).send(address)
     })
 })
 

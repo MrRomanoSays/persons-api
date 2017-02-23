@@ -9,6 +9,8 @@ $ npm start
 
 ### Quick Links
 * [Read a doc](#read-a-document)  
+ * [Read a person](#read-a-document)  
+ * [Read an address](#read-an-address)
 * [Read multiple docs](#read-multiple-documents)  
   * [Limit documents returned](#limit-the-number-of-documents-returned)  
 * [Create a doc](#create-a-document)  
@@ -25,13 +27,10 @@ $ npm start
 
 The following route parameters may be utilized:
 
-**:id**   -   *Each document's unique identifier*  
-**:firstName**   -   *The First Name associated with the document*  
-**:lastName**   -   *The Last Name associated with the document*  
-**:email**   -   *The email address associated with the document*  
-**:type**   -   *The type associated with the document.*  
-* For documents at route `/persons`, type is "person"  
-* For documents at route `/addresses`, type could be "home", "vacation", or "gravesite".
+**:id**   -   *Each person's unique identifier*  
+**:firstName**   -   *The person's first name*  
+**:lastName**   -   *The persons's last name*  
+**:email**   -   *The email address associated with the person*  
 
 **> Example Call:**
 
@@ -49,6 +48,45 @@ EX: GET /persons/person_armstrong_lance_oops@gmail.com
   "lastName": "Armstrong",
   "email": "oops@gmail.com",
   "type": "person"
+}
+```
+###### [Back to Quick Links](#quick-links)
+-------------------
+
+### READ AN ADDRESS
+
+**`GET /addresses/:id`** will [*"fetch"*]("https://pouchdb.com/api.html#fetch_document") a specific person's address from the database according to its unique "\_id key".
+
+The following route parameters may be utilized:
+
+**:id**   -   *Each document's unique identifier*  
+**:rev**   -   *The document's current revision identifier.*
+**:person_id**  -  *The person's id that the document is associated with*  
+**: address_type**  -  *Address types could be "home", "vacation", or "gravesite".*
+**:street**  -  *The street name of the address*  
+**:city**  -  *The city of the address*  
+**:state**  -  *The state of the address*  
+**:zip**  -  *The zipcode of the address*
+
+
+**> Example Call:**
+
+```
+GET /addresses/:id
+EX: GET /addresses/address_person_armstrong_lance_oops@gmail.com_1_sad_lane
+```
+
+**< Example Response:**
+```
+{
+  "_id": "address_person_armstrong_lance_oops@gmail.com_1_sad_lane",
+  "_rev": "1-49f86b73b2a59cb9af307220dc725b78",
+  "person_id": "person_armstrong_lance_oops@gmail.com",
+  "address_type": "home",
+  "street": "1 Sad Lane",
+  "city": "Dallas",
+  "state": "TX",
+  "zip": 75001
 }
 ```
 ###### [Back to Quick Links](#quick-links)

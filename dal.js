@@ -6,7 +6,15 @@ const db = new PouchDB('http://localhost:3000/test')
 function getPerson(id, cb) {
     db.get(id, function(err, doc) {
         if (err) return cb(err)
-        cb(null, doc)
+        cb(null, omit("type", doc))
+    })
+}
+
+// GET AN ADDRESS FROM THE DATABASE
+function getAddress(id, cb) {
+    db.get(id, function(err, address){
+        if(err) return cb(err)
+        cb(null, omit("type", address))
     })
 }
 
@@ -71,6 +79,7 @@ function deletePerson(id, cb) {
 
 const dal = {
     getPerson: getPerson,
+    getAddress: getAddress,
     addPerson: addPerson,
     updatePerson: updatePerson,
     deletePerson: deletePerson,
