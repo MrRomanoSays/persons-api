@@ -10,7 +10,7 @@ $ npm start
 ### Quick Links
 * [Read a doc](#read-a-document)  
 * [Read multiple docs](#read-multiple-documents)  
-* [Limit documents returned](#limit-the-number-of-documents-returned:)  
+  * [Limit documents returned](#limit-the-number-of-documents-returned)  
 * [Create a doc](#create-a-document)  
 * [Update a doc](#update-a-document)  
 * [Delete a doc](#delete-a-document)  
@@ -92,7 +92,7 @@ EX: GET /persons
   ```
   *Notice that this call returns an array filled with JSON objects.  In this example, two document objects were returned simulating a database of only two objects that met the `id: "person_"` criteria.*
 
-#### Limit The Number of Documents Returned:
+#### Limit The Number of Documents Returned
 
 Instead of retrieving all documents, you may wish to limit the number of documents returned.  This is performed by setting a *limit* within your query.  In the following example, the query would return only the first 10 people.  
 
