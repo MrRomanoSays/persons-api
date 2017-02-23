@@ -9,12 +9,11 @@ $ npm start
 
 ### Quick Links
 * [Read a doc](#read-a-document)  
-* [Read multiple docs]()  
-  * [Limit documents returned](# limit_the_number_of_documents_returned:)
+* [Read multiple docs](#read-multiple-documents)  
+  * [Limit documents returned](#limit-the-number-of-documents-returned:)  
 * [Create a doc](#create-a-document)  
 * [Update a doc](#update-a-document)  
 * [Delete a doc](#delete-a-document)  
-
 * [Status Code Guide](#troubleshooting-status-code-messages)  
 
 
