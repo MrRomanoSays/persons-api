@@ -8,11 +8,14 @@ $ npm start
 ```
 
 ### Quick Links
-[Read a doc](#read-a-document)  
-[Create a doc](#create-a-document)  
-[Delete a doc](#delete-a-document)  
-[Update a doc](#update-a-document)  
-[Status Code Guide](#troubleshooting-status-code-messages)  
+* [Read a doc](#read-a-document)  
+* [Read multiple docs]()  
+  * [Limit documents returned](# limit_the_number_of_documents_returned:)
+* [Create a doc](#create-a-document)  
+* [Update a doc](#update-a-document)  
+* [Delete a doc](#delete-a-document)  
+
+* [Status Code Guide](#troubleshooting-status-code-messages)  
 
 
 ## Endpoints
@@ -49,6 +52,59 @@ EX: GET /persons/person_armstrong_lance_oops@gmail.com
   "type": "person"
 }
 ```
+###### [Back to Quick Links](# quick_links)
+-------------------
+
+### READ MULTIPLE DOCUMENTS
+
+**`GET /persons`** will [*"fetch"*]("https://pouchdb.com/api.html#fetch_document")  all the database documents whose unique id keys start with "person_".  
+
+Here is an example of a person's id key for reference:
+
+`id: person_jobs_steve_stevejobs@apple.com.`  
+
+**> Example Call:**
+
+```
+GET /persons
+EX: GET /persons
+```
+
+**< Example Response:**
+```
+[
+  {
+    "_id": "person_armstrong_lance_oops@gmail.com",
+    "_rev": "2-a609c2a0185c4f47c17d872e00f32957",
+    "firstName": "Lance",
+    "lastName": "Armstrong",
+    "email": "oops@gmail.com",
+    "type": "person"
+  },
+  {
+    "_id": "person_barnes_jimmy_jimbo@gmail.com",
+    "_rev": "1-9fb5f3ca0f7532e49d3cc3e9e1b652b8",
+    "firstName": "Jimmy",
+    "lastName": "Barnes",
+    "email": "Jimbo@gmail.com",
+    "type": "person"
+  }
+  ]
+  ```
+  *Notice that this call returns an array filled with JSON objects.  In this example, two document objects were returned simulating a database of only two objects that met the `id: "person_"` criteria.*
+
+#### Limit The Number of Documents Returned:
+
+Instead of retrieving all documents, you may wish to limit the number of documents returned.  This is performed by setting a *limit* within your query.  In the following example, the query would return only the first 10 people.  
+
+**> Example Call:**
+```
+GET /persons?limit=[number]
+EX: GET /persons?limit=10
+```
+*COMMON ERROR:  The documents returned in this way will be sorted alphabetically according to each person document's id key.*
+
+###### [Back to Quick Links](# quick_links)
 -------------------
 
 ### CREATE A DOCUMENT
@@ -85,7 +141,7 @@ EX: POST /persons
   "rev": "1-e41a046293bbc20e9cb3bed7a5d40051"
 }
 ```
-
+###### [Back to Quick Links](# quick_links)
 -------------------
 
 ### DELETE A DOCUMENT
@@ -107,7 +163,7 @@ DELETE /persons/person_NewPersonFirstName_NewPersonLastName_NewPersonEmailAddres
   "rev": "2-91689fb6eae278e6e13c477a74ba10d8"
 }
 ```
-
+###### [Back to Quick Links](# quick_links)
 -------------------
 
 ### UPDATE A DOCUMENT
@@ -143,6 +199,7 @@ EX: /persons/person_seinfeld_elaine_elaine@gmail.com
   "rev": "2-cdc4f430df9b38c7e6ee2dcbea520d1c"  //NEW REVISION VALUE GENERATED REFLECTING UPDATE
 }
 ```
+###### [Back to Quick Links](# quick_links)
 -------------------
 
 ### TROUBLESHOOTING STATUS CODE MESSAGES  
@@ -151,3 +208,6 @@ EX: /persons/person_seinfeld_elaine_elaine@gmail.com
 201 - The request has been fulfilled and resulted in a new document being created.
 409 - The request could not be completed due to a conflict with the current state of the database. This code is only allowed in situations where it is expected that the user might be able to resolve the conflict and resubmit the request.  
 404 - The server has not found anything matching the Request.
+
+-------------------
+###### [Back to Quick Links](# quick_links)

@@ -1,16 +1,14 @@
 const PouchDB = require('pouchdb-http')
-const {map, omit,compose,prop} = require('ramda')
+const {map, omit, compose, prop } = require('ramda')
 const db = new PouchDB('http://localhost:3000/test')
 
-// create and export a function that retrieves a person from your couch database
+// GET A PERSON FROM THE DATABASE
 function getPerson(id, cb) {
-    //  "person_maddux_greg_maddog96@yahoo.com"
     db.get(id, function(err, doc) {
         if (err) return cb(err)
         cb(null, doc)
     })
 }
-
 
 function getPersons(limit, cb) {
     db.allDocs({
@@ -24,14 +22,13 @@ function getPersons(limit, cb) {
     })
 }
 
+//ADD PERSON ~ utilizes text from the request's body
 function addPerson(doc, cb) {
     if (prop("firstName", doc) && prop("lastName", doc) && prop("email", doc)) {
-
         db.put(prepNewPerson(doc), function(err, res) {
             if (err) return cb(err)
             cb(null, res)
         })
-
 
     } else {
         cb({
@@ -43,7 +40,6 @@ function addPerson(doc, cb) {
         })
     }
 }
-
 
 //HELPER FUNCTION FOR addPerson
 function prepNewPerson(doc) {
