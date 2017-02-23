@@ -51,7 +51,7 @@ EX: GET /persons/person_armstrong_lance_oops@gmail.com
   "type": "person"
 }
 ```
-###### [Back to Quick Links](# quick-links)
+###### [Back to Quick Links](#quick-links)
 -------------------
 
 ### READ MULTIPLE DOCUMENTS
@@ -103,7 +103,7 @@ EX: GET /persons?limit=10
 ```
 *COMMON ERROR:  The documents returned in this way will be sorted alphabetically according to each person document's id key.*
 
-###### [Back to Quick Links](# quick-links)
+###### [Back to Quick Links](#quick-links)
 -------------------
 
 ### CREATE A DOCUMENT
@@ -140,7 +140,7 @@ EX: POST /persons
   "rev": "1-e41a046293bbc20e9cb3bed7a5d40051"
 }
 ```
-###### [Back to Quick Links](# quick-links)
+###### [Back to Quick Links](#quick-links)
 -------------------
 
 ### DELETE A DOCUMENT
@@ -162,7 +162,7 @@ DELETE /persons/person_NewPersonFirstName_NewPersonLastName_NewPersonEmailAddres
   "rev": "2-91689fb6eae278e6e13c477a74ba10d8"
 }
 ```
-###### [Back to Quick Links](# quick-links)
+###### [Back to Quick Links](#quick-links)
 -------------------
 
 ### UPDATE A DOCUMENT
@@ -198,7 +198,7 @@ EX: /persons/person_seinfeld_elaine_elaine@gmail.com
   "rev": "2-cdc4f430df9b38c7e6ee2dcbea520d1c"  //NEW REVISION VALUE GENERATED REFLECTING UPDATE
 }
 ```
-###### [Back to Quick Links](# quick-links)
+###### [Back to Quick Links](#quick-links)
 -------------------
 
 ### TROUBLESHOOTING STATUS CODE MESSAGES  
@@ -209,4 +209,4 @@ EX: /persons/person_seinfeld_elaine_elaine@gmail.com
 404 - The server has not found anything matching the Request.
 
 -------------------
-###### [Back to Quick Links](# quick-links)
+###### [Back to Quick Links](#quick-links)
