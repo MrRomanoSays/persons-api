@@ -10,7 +10,7 @@ $ npm start
 ### Quick Links
 * [Read a doc](#read-a-document)  
 * [Read multiple docs](#read-multiple-documents)  
-  * [Limit documents returned](#limit-the-number-of-documents-returned:)  
+* [Limit documents returned](#limit-the-number-of-documents-returned:)  
 * [Create a doc](#create-a-document)  
 * [Update a doc](#update-a-document)  
 * [Delete a doc](#delete-a-document)  
